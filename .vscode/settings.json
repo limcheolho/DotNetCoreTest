@@ -1,0 +1,6 @@
+{
+  "dotnet.defaultSolution": "TestWebApi.sln",
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  }
+}
