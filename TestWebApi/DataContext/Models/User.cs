@@ -2,7 +2,7 @@
 
 namespace TestWebApi.DataContext.Models;
 
-public class User:BaseBase
+public class User : TableBase
 {
     public string userId { get; set; }
     public string userName { get; set; }
@@ -14,7 +14,9 @@ public class User:BaseBase
     public string? zipCode { get; set; }
     public string? address1 { get; set; }
     public string? address2 { get; set; }
-    public IList<RefreshToken>? refreshTokens { get; set; }
 
+    public int? totalTodos { get; set; }
+
+    public IList<RefreshToken>? refreshTokens { get; set; }
     public IList<Todo>? todos { get; set; }
 }

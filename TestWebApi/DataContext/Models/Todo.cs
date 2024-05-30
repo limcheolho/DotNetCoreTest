@@ -1,6 +1,6 @@
 ﻿namespace TestWebApi.DataContext.Models;
 
-public class Todo:BaseBase
+public class Todo:TableBase
 {
     public int todoNo { get; set; }
     public string userId { get; set; }

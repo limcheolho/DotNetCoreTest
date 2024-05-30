@@ -19,6 +19,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(g => g.zipCode).HasMaxLength(10).HasComment("우편번호");
         builder.Property(g => g.address1).HasMaxLength(100).HasComment("주소1");
         builder.Property(g => g.address2).HasMaxLength(200).HasComment("주소2");
-        
+
+        builder.Property(g => g.totalTodos).HasComment("투두토탈");
     }
 }

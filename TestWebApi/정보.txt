@@ -22,9 +22,12 @@ https://learn.microsoft.com/ko-kr/aspnet/core/mvc/controllers/filters?view=aspne
 //https: //stackoverflow.com/questions/2770303/how-to-find-in-which-controller-action-an-error-occurred
 
 #di의 개념
-https://www.c-sharpcorner.com/article/addtransient-and-addscoped-for-repository-registration-in-asp-net-core/
+https://www.c-sharpcorner.com/article/addtransient-and-addscoped-for-repository-registration-in-asp-net-core/cd 
 
 #ef core 관련
+
+도구 설치
+https://learn.microsoft.com/ko-kr/ef/core/cli/dotnet#update-the-tools
 
 #마이그레이션 시작
 dotnet ef migrations add logStack_20240315_4

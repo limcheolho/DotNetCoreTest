@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TestWebApi.DataContext;
 
-public abstract class BaseBase
+public abstract class TableBase
 {
     /// <summary>
     ///     최초등록일시

@@ -2,7 +2,7 @@
 using TestWebApi.DataContext.Configurations;
 using TestWebApi.DataContext.Models;
 
-namespace TestWebApi;
+namespace TestWebApi.DataContext;
 
 public class TestDbContext(DbContextOptions<TestDbContext> options) : DbContext(options)
 {

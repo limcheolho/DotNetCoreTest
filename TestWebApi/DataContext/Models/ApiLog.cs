@@ -2,7 +2,7 @@
 
 namespace TestWebApi.DataContext.Models;
 
-public class ApiLog:BaseBase
+public class ApiLog:TableBase
 {
     public int logNo { get; set; }
     public TimeSpan? elapsedSec { get; set; }
