@@ -1,0 +1,43 @@
+﻿#액션 필터
+https://learn.microsoft.com/ko-kr/aspnet/core/mvc/controllers/filters?view=aspnetcore-7.0
+
+#로깅 관련
+https://stackoverflow.com/questions/66087307/using-attribute-and-actionfilters-for-logging-request-and-response-of-controller
+
+#파일 업로드
+https://www.c-sharpcorner.com/article/upload-single-and-multiple-files-using-the-net-core-6-web-api/
+
+#log4net
+https://code-maze.com/aspnetcore-structured-logging-log4net/
+
+#fluent api로 1:N 외래키 관계 설정 방법
+https://afsdzvcx123.tistory.com/entry/C-EF-Core-Fluent-API-1N-%EA%B4%80%EA%B3%84
+
+#ef core crud
+https://lab.cliel.com/entry/C-Entity-Framework-Core-4-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A1%B0%EC%9E%91%EA%B3%BC-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98
+
+#커스텀 필터 설명
+
+https://learn.microsoft.com/ko-kr/aspnet/core/mvc/controllers/filters?view=aspnetcore-8.0
+//https: //stackoverflow.com/questions/2770303/how-to-find-in-which-controller-action-an-error-occurred
+
+#di의 개념
+https://www.c-sharpcorner.com/article/addtransient-and-addscoped-for-repository-registration-in-asp-net-core/
+
+#ef core 관련
+
+#마이그레이션 시작
+dotnet ef migrations add logStack_20240315_4
+
+#적용
+dotnet ef database update
+
+dotnet ef migrations remove
+ef core 완전 초기화(데이터 다 날라감)
+dotnet ef database drop -f -v
+
+
+닷넷 클린
+dotnet clean
+dotnet restore
+dotnet build

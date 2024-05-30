@@ -1,0 +1,20 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TestWebApi.DataContext.Models;
+
+public class User:BaseBase
+{
+    public string userId { get; set; }
+    public string userName { get; set; }
+    public string? email { get; set; }
+    public string? password { get; set; }
+    [NotMapped] public string? passwordAgain { get; set; }
+
+    public string? phoneNumber { get; set; }
+    public string? zipCode { get; set; }
+    public string? address1 { get; set; }
+    public string? address2 { get; set; }
+    public IList<RefreshToken>? refreshTokens { get; set; }
+
+    public IList<Todo>? todos { get; set; }
+}
