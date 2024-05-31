@@ -9078,24 +9078,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\isnow\\.nuget\\packages\\": {}
+    "C:\\Users\\yangchanwoo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repository\\NetCoreTest\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
+      "projectUniqueName": "D:\\repo\\test\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
       "projectName": "TestWebApi",
-      "projectPath": "D:\\repository\\NetCoreTest\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
-      "packagesPath": "C:\\Users\\isnow\\.nuget\\packages\\",
-      "outputPath": "D:\\repository\\NetCoreTest\\DotNetCoreTest\\TestWebApi\\obj\\",
+      "projectPath": "D:\\repo\\test\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
+      "packagesPath": "C:\\Users\\yangchanwoo\\.nuget\\packages\\",
+      "outputPath": "D:\\repo\\test\\DotNetCoreTest\\TestWebApi\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\isnow\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\yangchanwoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9108,11 +9116,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -9215,7 +9218,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

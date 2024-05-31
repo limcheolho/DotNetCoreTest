@@ -1,6 +1,4 @@
-﻿#nullable enable
-using TestWebApi.DataContext;
-
+﻿
 namespace TestWebApi.Helpers;
 
 /// <summary>

@@ -1,6 +1,7 @@
 ﻿using TestWebApi.Helpers;
 using TestWebApi.Services;
 using TestWebApi.Services.Auth;
+using TestWebApi.Services.Logging.ApiLogService;
 using TestWebApi.Services.Todo;
 using TestWebApi.Settings;
 using HttpContextExtensions = Microsoft.AspNetCore.Server.IIS.HttpContextExtensions;
@@ -20,13 +21,9 @@ public static class DependencyInjectionSetup
         services.AddScoped<ITodoService, TodoService>();
         services.AddScoped<IApiLogService, ApiLogService>();
 
-        services.AddSingleton<JwtHelper>();        
+        services.AddSingleton<JwtHelper>();
         services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
         services.AddSingleton<HttpContextExtensions>();
         services.AddSingleton<SystemInfoExtensions>();
-
-
-
-
     }
 }

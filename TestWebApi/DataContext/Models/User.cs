@@ -4,8 +4,8 @@ namespace TestWebApi.DataContext.Models;
 
 public class User : TableBase
 {
-    public string userId { get; set; }
-    public string userName { get; set; }
+    public required string userId { get; set; }
+    public required string userName { get; set; }
     public string? email { get; set; }
     public string? password { get; set; }
     [NotMapped] public string? passwordAgain { get; set; }

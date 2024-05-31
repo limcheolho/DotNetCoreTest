@@ -10,7 +10,8 @@ public class TestDbContext(DbContextOptions<TestDbContext> options) : DbContext(
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<Todo> Todos { get; set; }
     public DbSet<User> Users { get; set; }
-
+    public DbSet<ExceptionLog> ExceptionLogs { get; set; }
+    public DbSet<SchedulerLog> SchedulerLogs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -18,5 +19,7 @@ public class TestDbContext(DbContextOptions<TestDbContext> options) : DbContext(
         modelBuilder.ApplyConfiguration(new RefreshTokenConfiguration());
         modelBuilder.ApplyConfiguration(new TodoConfiguration());
         modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new ExceptionLogConfiguration());
+        modelBuilder.ApplyConfiguration(new SchedulerLogConfiguration());
     }
 }

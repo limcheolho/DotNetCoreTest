@@ -1,8 +1,9 @@
 ﻿using Quartz;
+using TestWebApi.Schedulers.Jobs;
 
 namespace TestWebApi.Startup;
 
-public class QuartzConfiguration
+public static class QuartzConfiguration
 {
     public static void QuartzStartup(this IServiceCollection services)
     {
@@ -10,7 +11,7 @@ public class QuartzConfiguration
         {
             //로그 삭제
             var deleteApiLogsJobKey = new JobKey("DeleteApiLogsJob");
-            q.AddJob<DeleteLogsJob>(opts => opts.WithIdentity(deleteApiLogsJobKey));
+            q.AddJob<DeleteApiLogsJob>(opts => opts.WithIdentity(deleteApiLogsJobKey));
             q.AddTrigger(opts =>
                 opts.ForJob(deleteApiLogsJobKey)
                     .WithIdentity("DeleteApiLogsJob-trigger")
@@ -38,7 +39,6 @@ public class QuartzConfiguration
                     .WithIdentity("DeleteUnusedRefreshTokensJob-trigger")
                     .WithSchedule(CronScheduleBuilder.DailyAtHourAndMinute(03, 30))
             );
-            
         });
     }
 }
