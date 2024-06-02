@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj": {}
+    "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj": {}
   },
   "projects": {
-    "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj": {
+    "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
+        "projectUniqueName": "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
         "projectName": "TestWebApi",
-        "projectPath": "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
+        "projectPath": "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
         "packagesPath": "C:\\Users\\isnow\\.nuget\\packages\\",
-        "outputPath": "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\obj\\",
+        "outputPath": "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\isnow\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,14 +43,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Firebase.Auth": {
-              "target": "Package",
-              "version": "[1.0.0, )"
-            },
-            "FirebaseAdmin": {
-              "target": "Package",
-              "version": "[2.4.0, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.1, )"

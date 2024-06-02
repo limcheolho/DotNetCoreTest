@@ -198,14 +198,6 @@ D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\TestWebApi.deps
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\TestWebApi.runtimeconfig.json
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\TestWebApi.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\TestWebApi.pdb
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Firebase.Auth.dll
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\FirebaseAdmin.dll
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Google.Api.Gax.dll
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Google.Apis.dll
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Google.Apis.Auth.PlatformServices.dll
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Google.Apis.Auth.dll
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Google.Apis.Core.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Humanizer.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\log4net.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -225,7 +217,6 @@ D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Microsoft.Ident
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\System.ServiceModel.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\repository\TestApi\DotNetCoreTest\TestWebApi\bin\Debug\net8.0\Mono.TextTemplating.dll
