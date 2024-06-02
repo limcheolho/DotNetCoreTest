@@ -1,10 +1,7 @@
-﻿using TestWebApi.Helpers;
-using TestWebApi.Services;
-using TestWebApi.Services.Auth;
+﻿using TestWebApi.Services;
+using TestWebApi.Services.AuthService;
 using TestWebApi.Services.Logging.ApiLogService;
-using TestWebApi.Services.Todo;
-using TestWebApi.Settings;
-using HttpContextExtensions = Microsoft.AspNetCore.Server.IIS.HttpContextExtensions;
+using TestWebApi.Services.TodoService;
 
 namespace TestWebApi.Startup;
 

@@ -15,8 +15,11 @@ public class User : TableBase
     public string? address1 { get; set; }
     public string? address2 { get; set; }
 
-    public int? totalTodos { get; set; }
+    public int totalTodos { get; set; }
 
     public IList<RefreshToken>? refreshTokens { get; set; }
     public IList<Todo>? todos { get; set; }
+    
+    
+    
 }

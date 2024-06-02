@@ -1,6 +1,6 @@
 ﻿using Quartz;
 using TestWebApi.Schedulers;
-using TestWebApi.Services.Auth;
+using TestWebApi.Services.AuthService;
 
 namespace TestWebApi;
 
@@ -20,7 +20,7 @@ public class DeleteUnusedRefreshTokensJob : IJob
     {
         async Task<string> Do()
         {
-            var deleteCount = await _authService.DeleteExpiredRefreshToken();
+            var deleteCount = await _authService.DeleteExpiredRefreshTokenAsync();
             return $"사용하지 않는 리프레쉬토큰 삭제 총 {deleteCount}건";
         }
 

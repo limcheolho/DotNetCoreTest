@@ -15,8 +15,8 @@ public static class SwaggerConfiguration
                 new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "GngBeauty API",
-                    Description = "GngBeauty API"
+                    Title = "TestWebApi Api",
+                    Description = "TestWebApi Api에요."
                 }
             );
 
