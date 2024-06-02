@@ -18,6 +18,10 @@ public class TodoController : ControllerBase
 
     [Route("list")]
     [HttpGet]
+    [ProducesResponseType(typeof(List<Todo>), 200)]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+
     public async Task<IActionResult> GetTodos(string? userId, string? title, string? contents)
     {
         var data = await _todoService.FindTodosAsync(userId, title, contents);
@@ -26,6 +30,10 @@ public class TodoController : ControllerBase
 
     [Route("one/{todoNo}")]
     [HttpGet]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(typeof(Todo), 200)]
+
     public async Task<IActionResult> GetTodo(int todoNo)
     {
         var data = await _todoService.FindTodoAsync(todoNo);
@@ -34,6 +42,9 @@ public class TodoController : ControllerBase
 
     [Route("save")]
     [HttpPost]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(200)]
     public async Task<IActionResult> SaveTodos(List<Todo> todos)
     {
         var count = await _todoService.SaveTodosAsync(todos);
@@ -43,6 +54,9 @@ public class TodoController : ControllerBase
 
     [Route("delete/{todoNo}")]
     [HttpDelete]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(200)]
     public async Task<IActionResult> DeleteTodo(int todoNo)
     {
         await _todoService.DeleteTodosAsync(todoNo);

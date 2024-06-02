@@ -37,6 +37,9 @@ public class AuthController : ControllerBase
     /// <returns></returns>
     [Route("id/{userId}")]
     [HttpGet]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(typeof(ReponseModel<string>), 200)]
     public async Task<IActionResult> FindId(string userId)
     {
         if (string.IsNullOrEmpty(userId))
@@ -59,6 +62,9 @@ public class AuthController : ControllerBase
     [HttpGet]
     [Authorize]
     [Route("users")]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(typeof(List<User>), 200)]
     public async Task<IActionResult> GetUsers(string? userId, string? userNm)
     {
         var data = await _authService.FindUsersAsync(userId, userNm);
@@ -217,7 +223,7 @@ public class AuthController : ControllerBase
             return Unauthorized("아이디 또는 비밀번호가 일치하지 않습니다.");
 
         if (!user.isValid)
-            return Unauthorized("관리자가 승인하지 않은 아이디입니다.\n승인 이후 로그인이 가능합니다.");
+            return Unauthorized("유효하지 않은 아이디입니다.");
 
         var tokens = _jwtHelper.GetJwtSecurityToken(user.userId);
 

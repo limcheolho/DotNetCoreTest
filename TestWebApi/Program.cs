@@ -5,32 +5,18 @@ using TestWebApi.Filters;
 using TestWebApi.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
-builder
-    .Services
-    /* ADD Log Action Filter */
-    .AddControllersWithViews(options =>
-    {
-        // options.OutputFormatters.Add(new SystemTextJsonOutputFormatter(
-        //     new JsonSerializerOptions(JsonSerializerDefaults.Web)
-        //     {
-        //         ReferenceHandler = ReferenceHandler.Preserve
-        //     })f
-        // options.Filters.Add<CustomLogActionFilter>();
-    })
-    //루프 방지
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-        // options.JsonSerializerOptions.PropertyNamingPolicy = null;
-        // options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-    });
-builder
-    .Services.AddControllers(options =>
+
+builder.Services.AddControllers(options =>
     {
         options.Filters.Add<CustomLogActionFilter>();
         options.Filters.Add<CustomExceptionFilter>();
     })
-    .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    });
+
 
 builder.Services.AddEndpointsApiExplorer();
 
