@@ -49,12 +49,11 @@ public class TodoService : ITodoService
                     updateCount += await UpdateTodoAsync(todo);
             }
 
-            if (todos != null)
-                await UpdateUserTodoCountAsync(
-                    todos.FirstOrDefault()!.userId,
-                    insertCount,
-                    isPlus: true
-                );
+            await UpdateUserTodoCountAsync(
+                todos.FirstOrDefault()!.userId,
+                insertCount,
+                isPlus: true
+            );
 
             await transaction.CommitAsync();
 
