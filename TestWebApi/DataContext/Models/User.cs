@@ -5,10 +5,12 @@ namespace TestWebApi.DataContext.Models;
 public class User : TableBase
 {
     public required string userId { get; set; }
-    public required string userName { get; set; }
+    public string? userName { get; set; }
     public string? email { get; set; }
     public string? password { get; set; }
-    [NotMapped] public string? passwordAgain { get; set; }
+
+    [NotMapped]
+    public string? passwordAgain { get; set; }
 
     public string? phoneNumber { get; set; }
     public string? zipCode { get; set; }
@@ -19,7 +21,4 @@ public class User : TableBase
 
     public IList<RefreshToken>? refreshTokens { get; set; }
     public IList<Todo>? todos { get; set; }
-    
-    
-    
 }

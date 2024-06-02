@@ -28,7 +28,7 @@ public class AuthService : IAuthService
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<IEnumerable<User>> FindUsersAsync(string userId, string userNm)
+    public async Task<IEnumerable<User>> FindUsersAsync(string? userId, string? userNm)
     {
         var data = await _dbContext
             .Users.Where(g =>
@@ -42,28 +42,9 @@ public class AuthService : IAuthService
                 )
             )
             .AsNoTracking()
+            .Include(g => g.todos)
+            .Include(g => g.refreshTokens)
             .ToListAsync();
-
-        return data;
-    }
-
-
-    public async Task<IEnumerable<User>> FindUsersAsync(string userId, string userNm)
-    {
-        var data = await _dbContext
-            .Users.Where(g =>
-                (
-                    string.IsNullOrEmpty(userId)
-                    || !string.IsNullOrEmpty(userId) && g.userId == userId
-                )
-                && (
-                    string.IsNullOrEmpty(userNm)
-                    || !string.IsNullOrEmpty(userNm) && g.userName.Contains(userNm)
-                )
-            )
-            .AsNoTracking()
-            .ToListAsync();
-
 
         return data;
     }
@@ -87,7 +68,6 @@ public class AuthService : IAuthService
         await _dbContext.SaveChangesAsync();
     }
 
-
     public async Task UpdateUserAsync(User user)
     {
         var data = await FindOneAsync(userId: user.userId);
@@ -105,4 +85,49 @@ public class AuthService : IAuthService
 
     public async Task<User?> FindOneAsync(string userId) =>
         await _dbContext.Users.FirstOrDefaultAsync(x => x.userId.Trim() == userId.Trim());
+
+    //리프레쉬 토큰 저장
+    public async Task AddRefreshTokenAsync(string refreshToken, string userId)
+    {
+        var newRefresh = new RefreshToken()
+        {
+            userId = userId,
+            refreshTokenExpiryTime = DateTime.Now.AddDays(
+                _jwtSettings.Value.RefreshTokenValidityInDays
+            ),
+            refreshToken = refreshToken,
+        };
+        _systemInfoExtensions.SetModelLogInfo(newRefresh);
+
+        await _dbContext.RefreshTokens.AddAsync(newRefresh);
+        await _dbContext.SaveChangesAsync();
+    }
+
+    //리프레쉬 토큰 갱신
+    public async Task RenewRefreshTokenAsync(RefreshToken refresh, string newRefreshToken)
+    {
+        var newRefresh = new RefreshToken()
+        {
+            userId = refresh.userId,
+            refreshTokenExpiryTime = DateTime.Now.AddDays(
+                _jwtSettings.Value.RefreshTokenValidityInDays
+            ),
+            refreshToken = newRefreshToken,
+        };
+        _systemInfoExtensions.SetModelLogInfo(newRefresh);
+        //기존 리프레쉬 토큰 삭제
+        _dbContext.RefreshTokens.Remove(refresh);
+        //신규 리프레쉬 토큰 추가
+        await _dbContext.RefreshTokens.AddAsync(newRefresh);
+
+        await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task<RefreshToken?> FindOneByRefreshTokenAsync(string refreshToken)
+    {
+        var data = await _dbContext
+            .RefreshTokens.Include(g => g.user)
+            .FirstOrDefaultAsync(g => g.refreshToken == refreshToken && g.isValid);
+        return data;
+    }
 }

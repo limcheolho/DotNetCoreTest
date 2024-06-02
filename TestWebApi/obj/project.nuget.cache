@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5l+Hxw/OKbQ=",
+  "dgSpecHash": "RrlQSvf/ghM=",
   "success": true,
-  "projectFilePath": "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
+  "projectFilePath": "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\isnow\\.nuget\\packages\\firebase.auth\\1.0.0\\firebase.auth.1.0.0.nupkg.sha512",
     "C:\\Users\\isnow\\.nuget\\packages\\firebaseadmin\\2.4.0\\firebaseadmin.2.4.0.nupkg.sha512",

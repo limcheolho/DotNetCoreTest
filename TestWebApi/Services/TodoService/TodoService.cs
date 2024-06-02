@@ -11,24 +11,25 @@ public class TodoService : ITodoService
         _systemInfoExtensions = systemInfoExtensions;
     }
 
-
     private async Task<int> InsertTodoAsync(Todo todo)
     {
         _systemInfoExtensions.SetModelLogInfo(todo);
         await _dbContext.AddAsync(todo);
+
         var successCount = await _dbContext.SaveChangesAsync();
         return successCount;
     }
 
-
     private async Task<int> UpdateTodoAsync(Todo todo)
     {
-        var data = await _dbContext.Todos.SingleOrDefaultAsync(g => g.todoNo == todo.todoNo);
-        if (data == null)
-            throw new System.InvalidOperationException($"업데이트할 데이터가 없습니다. {todo.todoNo}");
+        var data =
+            await _dbContext.Todos.SingleOrDefaultAsync(g => g.todoNo == todo.todoNo)
+            ?? throw new InvalidOperationException($"업데이트할 데이터가 없습니다. {todo.todoNo}");
         data.title = todo.title;
         data.contents = todo.contents;
         data.isValid = todo.isValid;
+        _systemInfoExtensions.SetModelLogInfo(data);
+
         var successCount = await _dbContext.SaveChangesAsync();
         return successCount;
     }
@@ -48,7 +49,15 @@ public class TodoService : ITodoService
                     updateCount += await UpdateTodoAsync(todo);
             }
 
-            await UpdateUserTodoCountAsync(todos.FirstOrDefault()!.userId, insertCount, true);
+            if (todos != null)
+                await UpdateUserTodoCountAsync(
+                    todos.FirstOrDefault()!.userId,
+                    insertCount,
+                    isPlus: true
+                );
+
+            await transaction.CommitAsync();
+
             return insertCount + updateCount;
         }
         catch
@@ -68,10 +77,11 @@ public class TodoService : ITodoService
             if (data == null)
                 return;
 
-            await UpdateUserTodoCountAsync(data.userId, 1, false);
+            await UpdateUserTodoCountAsync(data.userId, 1, isPlus: false);
 
             _dbContext.RemoveRange(data);
             await _dbContext.SaveChangesAsync();
+            await transaction.CommitAsync();
         }
         catch
         {
@@ -81,21 +91,31 @@ public class TodoService : ITodoService
         }
     }
 
-    public async Task<IEnumerable<Todo>> FindTodosAsync(string? userId, string? title, string? contents)
+    public async Task<IEnumerable<Todo>> FindTodosAsync(
+        string? userId,
+        string? title,
+        string? contents
+    )
     {
-        var data = await _dbContext.Todos.Where(g =>
-            (string.IsNullOrEmpty(userId) || !string.IsNullOrEmpty(userId) && g.userId == userId
+        var data = await _dbContext
+            .Todos.Where(g =>
+                (
+                    string.IsNullOrEmpty(userId)
+                    || !string.IsNullOrEmpty(userId) && g.userId == userId
+                )
+                && (
+                    string.IsNullOrEmpty(title)
+                    || !string.IsNullOrEmpty(title) && g.title.Contains(title)
+                )
+                && (
+                    string.IsNullOrEmpty(contents)
+                    || !string.IsNullOrEmpty(contents) && g.title.Contains(contents)
+                )
             )
-            && (
-                string.IsNullOrEmpty(title)
-                || !string.IsNullOrEmpty(title) && g.title.Contains(title)
-            )
-            &&
-            (
-                string.IsNullOrEmpty(contents)
-                || !string.IsNullOrEmpty(contents) && g.title.Contains(contents)
-            )
-        ).AsNoTracking().ToListAsync();
+            .AsNoTracking()
+            .Include(g => g.user)
+            .ThenInclude(g => g.refreshTokens)
+            .ToListAsync();
         return data;
     }
 

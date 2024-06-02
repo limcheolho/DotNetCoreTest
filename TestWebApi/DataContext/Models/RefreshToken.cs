@@ -1,6 +1,6 @@
 ﻿namespace TestWebApi.DataContext.Models;
 
-public class RefreshToken
+public class RefreshToken:TableBase
 {
     public required string refreshToken { get; set; }
 

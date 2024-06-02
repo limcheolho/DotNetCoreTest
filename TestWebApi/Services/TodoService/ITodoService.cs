@@ -2,8 +2,6 @@
 
 public interface ITodoService
 {
-    
-
     public Task<int> SaveTodosAsync(List<Todo> todos);
 
     public Task DeleteTodosAsync(int todoNo);

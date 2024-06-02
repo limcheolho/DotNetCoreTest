@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj": {}
+    "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj": {}
   },
   "projects": {
-    "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj": {
+    "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
+        "projectUniqueName": "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
         "projectName": "TestWebApi",
-        "projectPath": "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
+        "projectPath": "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\TestWebApi.csproj",
         "packagesPath": "C:\\Users\\isnow\\.nuget\\packages\\",
-        "outputPath": "D:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\obj\\",
+        "outputPath": "d:\\repository\\TestApi\\DotNetCoreTest\\TestWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\isnow\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,5 +1,4 @@
-﻿#nullable enable
-namespace TestWebApi.Helpers;
+﻿namespace TestWebApi.Helpers;
 
 public class HttpContextExtensions
 {

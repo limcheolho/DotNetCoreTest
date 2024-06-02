@@ -1,5 +1,4 @@
-﻿
-namespace TestWebApi.Helpers;
+﻿namespace TestWebApi.Helpers;
 
 /// <summary>
 ///
@@ -34,22 +33,22 @@ public class SystemInfoExtensions(HttpContextExtensions httpContextExtensions)
         if (model == null)
             return;
 
-        var programNm = request.Headers["programNm"].ToString();
+        var programName = request.Headers["programName"].ToString();
         var userId = request.Headers["userId"].ToString();
-        programNm = string.IsNullOrEmpty(programNm) ? "unidentified" : programNm;
+        programName = string.IsNullOrEmpty(programName) ? "unidentified" : programName;
         userId = string.IsNullOrEmpty(userId) ? "unidentified" : userId;
         var ipAddress = _httpContextExtensions.GetIp();
 
         var isInsert = string.IsNullOrEmpty(model.createdBy);
         model.updatedAt = DateTime.Now;
-        model.updatedBy = programNm;
+        model.updatedBy = programName;
         model.updatedId = userId;
         model.updatedIp = ipAddress;
 
         if (!isInsert)
             return;
         model.createdAt = DateTime.Now;
-        model.createdBy = programNm;
+        model.createdBy = programName;
         model.createdId = userId;
         model.createdIp = ipAddress;
     }
@@ -65,19 +64,19 @@ public class SystemInfoExtensions(HttpContextExtensions httpContextExtensions)
         if (model == null)
             return;
 
-        var programNm = "system";
+        var programName = "system";
         var userId = "system";
         var ipAddress = _httpContextExtensions.GetIp();
 
         var isInsert = string.IsNullOrEmpty(model.createdBy);
         model.updatedAt = DateTime.Now;
-        model.updatedBy = programNm;
+        model.updatedBy = programName;
         model.updatedId = userId;
         model.updatedIp = ipAddress;
         if (!isInsert)
             return;
         model.createdAt = DateTime.Now;
-        model.createdBy = programNm;
+        model.createdBy = programName;
         model.createdId = userId;
         model.createdIp = ipAddress;
     }
