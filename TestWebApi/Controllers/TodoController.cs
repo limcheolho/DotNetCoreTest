@@ -16,6 +16,13 @@ public class TodoController : ControllerBase
         _todoService = todoService;
     }
 
+    /// <summary>
+    /// 투두 리스트
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="title"></param>
+    /// <param name="contents"></param>
+    /// <returns></returns>
     [Route("list")]
     [HttpGet]
     [ProducesResponseType(typeof(List<Todo>), 200)]
@@ -28,6 +35,11 @@ public class TodoController : ControllerBase
         return Ok(data);
     }
 
+    /// <summary>
+    /// 투두 번호로 투두 찾기
+    /// </summary>
+    /// <param name="todoNo"></param>
+    /// <returns></returns>
     [Route("one/{todoNo}")]
     [HttpGet]
     [ProducesResponseType(500)]
@@ -40,6 +52,11 @@ public class TodoController : ControllerBase
         return Ok(data);
     }
 
+    /// <summary>
+    /// 투두 저장
+    /// </summary>
+    /// <param name="todos"></param>
+    /// <returns></returns>
     [Route("save")]
     [HttpPost]
     [ProducesResponseType(500)]
@@ -52,6 +69,11 @@ public class TodoController : ControllerBase
         return Ok(count);
     }
 
+    /// <summary>
+    /// 투두 삭제
+    /// </summary>
+    /// <param name="todoNo"></param>
+    /// <returns></returns>
     [Route("delete/{todoNo}")]
     [HttpDelete]
     [ProducesResponseType(500)]

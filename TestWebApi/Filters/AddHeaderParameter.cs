@@ -3,12 +3,13 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace TestWebApi.Filters;
 
-public class AddHeaderParameter : IOperationFilter
+/// <summary>
+/// swagger 헤더 설정
+/// </summary>
+public abstract class AddHeaderParameter : IOperationFilter
 {
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
-        // operation.Parameters ??= [];
-
         operation.Parameters.Add(
             new OpenApiParameter
             {

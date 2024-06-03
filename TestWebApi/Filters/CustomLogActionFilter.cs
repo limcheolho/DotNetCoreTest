@@ -8,6 +8,9 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace TestWebApi.Filters;
 
+/// <summary>
+/// CustomLogActionFilter
+/// </summary>
 public class CustomLogActionFilter : IAsyncActionFilter
 {
     private readonly ILog _logger;
@@ -29,23 +32,17 @@ public class CustomLogActionFilter : IAsyncActionFilter
     {
         /* On Request */
 
-
         var controller = (string)context.RouteData.Values["Controller"]!;
         var action = (string)context.RouteData.Values["action"]!;
         var headerId = context.HttpContext.Request?.Headers["userId"].ToString();
-        var headerProgramNm = context.HttpContext.Request?.Headers["programNm"].ToString();
-        var headerAuthorization = context.HttpContext.Request?.Headers["Authorization"].ToString();
+        // var headerProgramNm = context.HttpContext.Request?.Headers["programNm"].ToString();
+        // var headerAuthorization = context.HttpContext.Request?.Headers["Authorization"].ToString();
 
-
-        var headerValue = JsonConvert.SerializeObject(context.HttpContext.Request?.Headers);
-
+        var headerValue = JsonSerializer.Serialize(context.HttpContext.Request?.Headers);
         var reqContents = JsonSerializer.Serialize(context.ActionArguments);
-
         var method = context.HttpContext.Request?.Method;
         var path = context.HttpContext.Request?.Path.ToString();
-
         var stopWatch = new Stopwatch();
-
 
         stopWatch.Start();
         var reqLogNo = await _apiLogService.InsertLogAsync(new ApiLog()
@@ -88,7 +85,6 @@ public class CustomLogActionFilter : IAsyncActionFilter
 
         if (resultContext.Exception != null)
             httpResult = 500;
-
 
         await _apiLogService.UpdateLogAsync(new ApiLog()
         {

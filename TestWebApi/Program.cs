@@ -6,13 +6,13 @@ using TestWebApi.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//filter 등록
-//json loop 방지
 builder.Services.AddControllers(options =>
     {
+        //filter 등록
         options.Filters.Add<CustomLogActionFilter>();
         options.Filters.Add<CustomExceptionFilter>();
     })
+    //json loop 방지
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -28,9 +28,18 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 
+//log4net 설정
 builder.Services.AddLog4net();
+//jwt 설정
 builder.Services.JwtStartup(builder.Configuration);
+
+//swagger 쓴다고 설정
+builder.Services.SwaggerStartup();
+
+//DI 주입
 builder.Services.RegisterServices(builder.Configuration);
+
+//Quartz 스케쥴러 실행
 builder.Services.QuartzStartup();
 
 // Add services to the container.
@@ -38,6 +47,7 @@ builder.Services.QuartzStartup();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//DB 접속 설정
 var connectionString = builder.Configuration.GetConnectionString("MariaDbConnectionString");
 builder.Services.AddDbContext<TestDbContext>(options =>
 {
@@ -45,8 +55,11 @@ builder.Services.AddDbContext<TestDbContext>(options =>
 });
 
 var app = builder.Build();
+
+//jwt 인증 사용
 app.UseAuthorization();
 
+//컨트롤러 맵핑
 app.MapControllers();
 
 /* Cors*/
@@ -65,7 +78,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 
-// 서비스를 가져와서 사용합니다.
+//서비스 시작시 텔레그램으로 메시지 보내기.
 await using (var serviceScope = app.Services.CreateAsyncScope())
 {
     var services = serviceScope.ServiceProvider;

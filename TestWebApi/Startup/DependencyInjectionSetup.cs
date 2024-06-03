@@ -1,5 +1,4 @@
-﻿using TestWebApi.Services;
-using TestWebApi.Services.AuthService;
+﻿using TestWebApi.Services.AuthService;
 using TestWebApi.Services.Logging.ApiLogService;
 using TestWebApi.Services.Logging.SchedulerLogService;
 using TestWebApi.Services.TelegramService;

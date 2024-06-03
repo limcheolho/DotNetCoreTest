@@ -47,7 +47,6 @@ public abstract class TableBase
     [Comment("최종수정프로그램명")]
     public string? updatedBy { get; set; }
 
-
     [MaxLength(50)] [Comment("최종입력ip주소")] public string? updatedIp { get; set; }
 
     /// <summary>
