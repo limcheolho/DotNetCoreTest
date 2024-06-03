@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-
-namespace TestWebApi.Services.AuthService;
+﻿namespace TestWebApi.Services.AuthService;
 
 public class AuthService : IAuthService
 {

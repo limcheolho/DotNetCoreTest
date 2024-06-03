@@ -1,11 +1,13 @@
 ﻿global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.Extensions.Options;
 global using Quartz;
+global using Telegram.Bot;
 global using TestWebApi.DataContext;
 global using TestWebApi.DataContext.Models;
 global using TestWebApi.Enums;
-global using TestWebApi.Schedulers;
-global using TestWebApi.Services.Logging.ExceptionLogService;
 global using TestWebApi.Helpers;
+global using TestWebApi.Schedulers;
+global using TestWebApi.Services.Logging.ApiLogService;
+global using TestWebApi.Services.Logging.ExceptionLogService;
 global using TestWebApi.Settings;
-global using Telegram.Bot;

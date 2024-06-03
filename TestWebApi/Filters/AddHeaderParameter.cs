@@ -16,7 +16,7 @@ public abstract class AddHeaderParameter : IOperationFilter
                 Name = "X-Authorization",
                 In = ParameterLocation.Header,
                 Required = false,
-                Description = " (login과 refresh에서만 사용. 다른곳에선 무시하세요.)",
+                Description = "(login과 refresh에서만 사용. 다른곳에선 무시하세요.)",
                 Schema = new OpenApiSchema { Type = "String" },
             }
         );

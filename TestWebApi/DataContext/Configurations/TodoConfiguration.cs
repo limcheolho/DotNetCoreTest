@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TestWebApi.DataContext.Models;
-
-namespace TestWebApi.DataContext.Configurations;
+﻿namespace TestWebApi.DataContext.Configurations;
 
 public class TodoConfiguration : IEntityTypeConfiguration<Todo>
 {

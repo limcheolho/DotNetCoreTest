@@ -26,7 +26,7 @@ public static class DependencyInjectionSetup
 
         //exception로그
         services.AddScoped<IExceptionLogService, ExceptionLogService>();
-        //shedulerbase
+        //schedulerbase
         services.AddScoped<SchedulerBase>();
 
         //스케쥴러 로그

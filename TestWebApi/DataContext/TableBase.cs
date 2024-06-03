@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
 
 namespace TestWebApi.DataContext;
 
@@ -25,7 +24,9 @@ public abstract class TableBase
     [Comment("최초입력프로그램명")]
     public string? createdBy { get; set; }
 
-    [MaxLength(50)] [Comment("최초입력ip주소")] public string? createdIp { get; set; }
+    [MaxLength(50)]
+    [Comment("최초입력ip주소")]
+    public string? createdIp { get; set; }
 
     /// <summary>
     ///     최종수정일시
@@ -47,7 +48,9 @@ public abstract class TableBase
     [Comment("최종수정프로그램명")]
     public string? updatedBy { get; set; }
 
-    [MaxLength(50)] [Comment("최종입력ip주소")] public string? updatedIp { get; set; }
+    [MaxLength(50)]
+    [Comment("최종입력ip주소")]
+    public string? updatedIp { get; set; }
 
     /// <summary>
     ///     사용여부

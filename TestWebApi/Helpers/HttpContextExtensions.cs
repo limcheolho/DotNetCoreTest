@@ -9,17 +9,16 @@ public class HttpContextExtensions
         _httpContextAccessor = httpContextAccessor;
     }
 
-
     public HttpRequest? GetHttpRequest()
     {
         return _httpContextAccessor.HttpContext?.Request;
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
-    public String? GetIp()
+    public string? GetIp()
     {
         if (_httpContextAccessor.HttpContext == null)
             return "batch";

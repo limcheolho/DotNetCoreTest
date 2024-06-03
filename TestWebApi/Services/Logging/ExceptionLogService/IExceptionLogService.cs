@@ -3,6 +3,9 @@ using TestWebApi.DataContext.Models;
 
 namespace TestWebApi.Services.Logging.ExceptionLogService;
 
+/// <summary>
+/// exception 로그
+/// </summary>
 public interface IExceptionLogService
 {
     /// <summary>
@@ -19,7 +22,7 @@ public interface IExceptionLogService
     /// <param name="callerName"></param>
     public Task InsertExceptionLogAsync(
         Exception inner,
-        [CallerMemberName] string callerName = null
+        [CallerMemberName] string? callerName = null
     );
 
     /// <summary>

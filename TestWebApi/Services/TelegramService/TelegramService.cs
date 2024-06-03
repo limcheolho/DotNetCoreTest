@@ -1,6 +1,4 @@
-﻿
-namespace TestWebApi.Services.TelegramService;
-
+﻿namespace TestWebApi.Services.TelegramService;
 
 public class TelegramService : ITelegramService
 {

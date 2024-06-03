@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestWebApi</name>
+    </assembly>
+    <members>
+        <member name="T:TestWebApi.Controllers.AuthController">
+            <summary>
+                인증
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Controllers.AuthController.#ctor(TestWebApi.Services.AuthService.IAuthService,TestWebApi.Helpers.JwtHelper)">
+            <summary>
+                인증
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Controllers.AuthController.FindId(System.String)">
+            <summary>
+                아이디 찾기
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.AuthController.GetUsers(System.String,System.String)">
+            <summary>
+                사용자정보 가져오기
+            </summary>
+            <param name="userId"></param>
+            <param name="userNm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.AuthController.UpdatePassword(TestWebApi.DataContext.Models.User)">
+            <summary>
+                사용자 비밀번호 업데이트
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.AuthController.UpdateUser(TestWebApi.DataContext.Models.User)">
+            <summary>
+                사용자 정보 업데이트
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.AuthController.Join(TestWebApi.DataContext.Models.User)">
+            <summary>
+                회원가입
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.AuthController.RefreshToken">
+            <summary>
+                토큰재발급
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.AuthController.Login">
+            <summary>
+                로그인
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.TodoController.GetTodos(System.String,System.String,System.String)">
+            <summary>
+            투두 리스트
+            </summary>
+            <param name="userId"></param>
+            <param name="title"></param>
+            <param name="contents"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.TodoController.GetTodo(System.Int32)">
+            <summary>
+            투두 번호로 투두 찾기
+            </summary>
+            <param name="todoNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.TodoController.SaveTodos(System.Collections.Generic.List{TestWebApi.DataContext.Models.Todo})">
+            <summary>
+            투두 저장
+            </summary>
+            <param name="todos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Controllers.TodoController.DeleteTodo(System.Int32)">
+            <summary>
+            투두 삭제
+            </summary>
+            <param name="todoNo"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TestWebApi.DataContext.TableBase.createdAt">
+            <summary>
+                최초등록일시
+            </summary>
+        </member>
+        <member name="P:TestWebApi.DataContext.TableBase.createdId">
+            <summary>
+                최초입력자
+            </summary>
+        </member>
+        <member name="P:TestWebApi.DataContext.TableBase.createdBy">
+            <summary>
+                최초입력프로그램명
+            </summary>
+        </member>
+        <member name="P:TestWebApi.DataContext.TableBase.updatedAt">
+            <summary>
+                최종수정일시
+            </summary>
+        </member>
+        <member name="P:TestWebApi.DataContext.TableBase.updatedId">
+            <summary>
+                최종수정자
+            </summary>
+        </member>
+        <member name="P:TestWebApi.DataContext.TableBase.updatedBy">
+            <summary>
+                최종수정프로그램명
+            </summary>
+        </member>
+        <member name="P:TestWebApi.DataContext.TableBase.isValid">
+            <summary>
+                사용여부
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Filters.CustomExceptionFilter.OnExceptionAsync(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:TestWebApi.Filters.CustomLogActionFilter.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            Controller의 Request와 Response때 로그 발생시킴
+            </summary>
+            <param name="context"></param>
+            <param name="next"></param> 
+        </member>
+        <member name="T:TestWebApi.Helpers.ExceptionLogHelper">
+            <summary>
+            에러 로깅
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Helpers.ExceptionLogHelper.ControllerLog(System.Exception,System.String,System.String)">
+            <summary>
+            controller exception 로그
+            </summary>
+            <param name="inner"></param>
+            <param name="controllerName"></param>
+            <param name="actionName"></param>
+        </member>
+        <member name="M:TestWebApi.Helpers.HttpContextExtensions.GetIp">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TestWebApi.Helpers.HttpRequestHeaderHelper">
+            <summary>
+            Header 정보 가져와서 처리하는 로직들
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Helpers.HttpRequestHeaderHelper.HeaderValidationAndGetHeader(TestWebApi.Enums.HeaderType,Microsoft.AspNetCore.Http.HttpRequest)">
+             <summary>
+            
+             </summary>
+             <param name="header"></param>
+             <param name="request"></param>
+             <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Helpers.JwtHelper.GetJwtSecurityToken(System.String)">
+            <summary>
+            토큰 발급
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Helpers.JwtHelper.GenerateRefreshToken">
+            <summary>
+             리프레쉬 토큰 생성
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Helpers.JwtHelper.CreateToken(System.Collections.Generic.List{System.Security.Claims.Claim})">
+            <summary>
+                토큰 생성
+            </summary>
+            <param name="authClaims"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Helpers.LoginExtensions.PasswordCheck(System.String)">
+            <summary>
+                비밀번호 체크 정규식
+            </summary>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TestWebApi.Helpers.SystemInfoExtensions">
+             <summary>
+            
+             </summary>
+             <param name="httpContextExtensions"></param>
+        </member>
+        <member name="M:TestWebApi.Helpers.SystemInfoExtensions.#ctor(TestWebApi.Helpers.HttpContextExtensions)">
+             <summary>
+            
+             </summary>
+             <param name="httpContextExtensions"></param>
+        </member>
+        <member name="M:TestWebApi.Helpers.SystemInfoExtensions.GetHttpRequest">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Helpers.SystemInfoExtensions.SetModelLogInfo``1(``0)">
+            <summary>
+                테이블에 수정정보 기록
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="model"></param>
+        </member>
+        <member name="M:TestWebApi.Helpers.SystemInfoExtensions.SetSystemModelLogInfo``1(``0)">
+             <summary>
+            
+             </summary>
+             <param name="model"></param>
+             <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:TestWebApi.Migrations.logStack_20240315_4">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations.logStack_20240315_4.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations.logStack_20240315_4.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations.logStack_20240315_4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TestWebApi.Migrations._20240602_1">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240602_1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240602_1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240602_1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TestWebApi.Migrations._20240603_4">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240603_4.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240603_4.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240603_4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TestWebApi.Migrations._20240603_5">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240603_5.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240603_5.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Migrations._20240603_5.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TestWebApi.Models.ReponseModel`1.#ctor">
+            <summary>
+                생성자
+            </summary>
+        </member>
+        <member name="T:TestWebApi.Schedulers.SchedulerBase">
+            <summary>
+            스케줄러 베이스
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Schedulers.SchedulerBase.RunSchedulerAsync(TestWebApi.Enums.SchedulerJobType,System.Func{System.Threading.Tasks.Task{System.String}})">
+            <summary>
+            배치 로직
+            </summary>
+            <param name="jobType"></param>
+            <param name="func"></param>
+            <exception cref="T:Quartz.JobExecutionException"></exception>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.CreateUserAsync(TestWebApi.DataContext.Models.User,System.String)">
+            <summary>
+            사용자 생성
+            </summary>
+            <param name="user"></param>
+            <param name="hashedPassword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.UpdateUserPasswordAsync(TestWebApi.DataContext.Models.User)">
+            <summary>
+            비밀번호 변경
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.FindUsersAsync(System.String,System.String)">
+            <summary>
+            사용자 리스트 조회
+            </summary>
+            <param name="userId"></param>
+            <param name="userNm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.FindOneAsync(System.String)">
+            <summary>
+            id 유효성 검사
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.AddRefreshTokenAsync(System.String,System.String)">
+            <summary>
+            리프레쉬 토큰 생성
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.RenewRefreshTokenAsync(TestWebApi.DataContext.Models.RefreshToken,System.String)">
+            <summary>
+            리프레쉬 토큰 갱신
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.FindOneByRefreshTokenAsync(System.String)">
+            <summary>
+            refreshToken으로 사용자 찾기
+            </summary>
+            <param name="refreshToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.DeleteExpiredRefreshTokenAsync">
+            <summary>
+            유효기간이 지난 리프레쉬토큰 삭제
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.AuthService.IAuthService.UpdateUserAsync(TestWebApi.DataContext.Models.User)">
+            <summary>
+            사용자 정보 업데이트
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ApiLogService.ApiLogService.InsertLogAsync(TestWebApi.DataContext.Models.ApiLog)">
+            <summary>
+            로그 insert
+            </summary>
+            <param name="apiLog"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ApiLogService.ApiLogService.UpdateLogAsync(TestWebApi.DataContext.Models.ApiLog)">
+             <summary>
+            
+             </summary>
+             <param name="apiLog"></param>
+             <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ApiLogService.ApiLogService.DeleteLogAsync">
+            <summary>
+            로그 삭제 (스케줄러 잡에서 사용)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TestWebApi.Services.Logging.ApiLogService.IApiLogService">
+            <summary>
+            로깅 및 로깅 삭제 서비스임
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ApiLogService.IApiLogService.InsertLogAsync(TestWebApi.DataContext.Models.ApiLog)">
+            <summary>
+            로그 insert
+            </summary>
+            <param name="apiLog"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ApiLogService.IApiLogService.UpdateLogAsync(TestWebApi.DataContext.Models.ApiLog)">
+            <summary>
+            로그 update
+            </summary>
+            <param name="apiLog"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ApiLogService.IApiLogService.DeleteLogAsync">
+            <summary>
+            로그 삭제 (스케줄러 잡에서 사용)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ExceptionLogService.IExceptionLogService.InsertControllerExceptionLogAsync(TestWebApi.DataContext.Models.ExceptionLog)">
+            <summary>
+            컨트롤러에서 발생한 Exception로그 저장
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ExceptionLogService.IExceptionLogService.InsertExceptionLogAsync(System.Exception,System.String)">
+            <summary>
+            Exception로그 저장
+            </summary>
+            <param name="inner"></param>
+            <param name="callerName"></param>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.ExceptionLogService.IExceptionLogService.DeleteExpiredExceptionLogAsync">
+            <summary>
+            2주일이 지난 에러 로그 삭제
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TestWebApi.Services.Logging.SchedulerLogService.ISchedulerLogService">
+            <summary>
+            스케줄러 잡 로그 서비스
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.SchedulerLogService.ISchedulerLogService.InsertLogAsync(TestWebApi.DataContext.Models.SchedulerLog)">
+            <summary>
+            스케줄러 로그 insert
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.SchedulerLogService.ISchedulerLogService.UpdateLogAsync(TestWebApi.DataContext.Models.SchedulerLog)">
+            <summary>
+            스케줄러 로그 update
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TestWebApi.Services.Logging.SchedulerLogService.SchedulerLogService">
+            <summary>
+            스케줄러 잡 로그 서비스
+            </summary>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.SchedulerLogService.SchedulerLogService.InsertLogAsync(TestWebApi.DataContext.Models.SchedulerLog)">
+            <summary>
+            로그 저장
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.Logging.SchedulerLogService.SchedulerLogService.UpdateLogAsync(TestWebApi.DataContext.Models.SchedulerLog)">
+            <summary>
+            로그 작업 종료 이후 업데이트
+            </summary>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.TelegramService.ITelegramService.SendTextAsync(System.String)">
+            <summary>
+            단순 메시지 보내기
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.TelegramService.ITelegramService.SendSchedulerStartAsync(TestWebApi.Enums.SchedulerJobType,System.Int32)">
+            <summary>
+            quart.net 스케쥴러 잡 시작시
+            </summary>
+            <param name="jobType"></param>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.TelegramService.ITelegramService.SendSchedulerTerminatedAsync(TestWebApi.Enums.SchedulerJobType,System.Int32,System.String)">
+            <summary>
+            quart.net 스케쥴러 잡 성공시
+            </summary>
+            <param name="jobType"></param>
+            <param name="jobNo"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.TelegramService.ITelegramService.SendExceptionAsync(TestWebApi.DataContext.Models.ExceptionLog)">
+            <summary>
+            exception 발생시
+            </summary>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.TodoService.ITodoService.SaveTodosAsync(System.Collections.Generic.List{TestWebApi.DataContext.Models.Todo})">
+            <summary>
+            Todo 저장 -> update/insert
+            </summary>
+            <param name="todos"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.TodoService.ITodoService.DeleteTodosAsync(System.Int32)">
+            <summary>
+            todo 삭제
+            </summary>
+            <param name="todoNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.TodoService.ITodoService.FindTodosAsync(System.String,System.String,System.String)">
+            <summary>
+            todo 리스트 조회
+            </summary>
+            <param name="userId"></param>
+            <param name="title"></param>
+            <param name="contents"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TestWebApi.Services.TodoService.ITodoService.FindTodoAsync(System.Int32)">
+            <summary>
+            todo 번호로 조회
+            </summary>
+            <param name="todoNo"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

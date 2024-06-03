@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TestWebApi.DataContext.Configurations;
-using TestWebApi.DataContext.Models;
+﻿using TestWebApi.DataContext.Configurations;
 
 namespace TestWebApi.DataContext;
 

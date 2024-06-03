@@ -10,6 +10,12 @@ public class SchedulerLogService : ISchedulerLogService
     private readonly IExceptionLogService _exceptionLogService;
     private readonly SystemInfoExtensions _systemInfoExtensions;
 
+    /// <summary>
+    /// construnctor
+    /// /// </summary>
+    /// <param name="dbContext"></param>
+    /// <param name="exceptionLogService"></param>
+    /// <param name="systemInfoExtensions"></param>
     public SchedulerLogService(
         TestDbContext dbContext,
         IExceptionLogService exceptionLogService,

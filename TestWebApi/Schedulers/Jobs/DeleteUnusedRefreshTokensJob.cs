@@ -1,16 +1,13 @@
-﻿using Quartz;
-using TestWebApi.Schedulers;
-using TestWebApi.Services.AuthService;
+﻿using TestWebApi.Services.AuthService;
 
-namespace TestWebApi;
+namespace TestWebApi.Schedulers.Jobs;
 
 public class DeleteUnusedRefreshTokensJob : IJob
 {
     private readonly SchedulerBase _schedulerBase;
     private readonly IAuthService _authService;
 
-    public DeleteUnusedRefreshTokensJob(
-        SchedulerBase schedulerBase, IAuthService authService)
+    public DeleteUnusedRefreshTokensJob(SchedulerBase schedulerBase, IAuthService authService)
     {
         _schedulerBase = schedulerBase;
         _authService = authService;

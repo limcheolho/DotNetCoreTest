@@ -1,10 +1,6 @@
-﻿using System.Net;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using TestWebApi.Helpers;
 using TestWebApi.Models;
 using TestWebApi.Services.AuthService;
 
@@ -80,6 +76,9 @@ public class AuthController : ControllerBase
     [HttpPut]
     [Authorize]
     [Route("password")]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(200)]
     public async Task<IActionResult> UpdatePassword([FromBody] User user)
     {
         if (string.IsNullOrEmpty(user.password) || string.IsNullOrEmpty(user.password))
@@ -103,6 +102,9 @@ public class AuthController : ControllerBase
     [HttpPut]
     [Authorize]
     [Route("edit")]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(200)]
     public async Task<IActionResult> UpdateUser([FromBody] User user)
     {
         if (!string.IsNullOrEmpty(user.email))
@@ -124,6 +126,9 @@ public class AuthController : ControllerBase
     /// <returns></returns>
     [Route("join")]
     [HttpPost]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(200)]
     public async Task<IActionResult> Join([FromBody] User user)
     {
         if (string.IsNullOrEmpty(user.userId))
@@ -165,6 +170,9 @@ public class AuthController : ControllerBase
     /// <returns></returns>
     [HttpPost]
     [Route("refresh")]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(typeof(JwtResponseModel), 200)]
     public async Task<IActionResult> RefreshToken()
     {
         var headerValidation = HttpRequestHeaderHelper.HeaderValidationAndGetHeader(
@@ -196,6 +204,9 @@ public class AuthController : ControllerBase
     /// <returns></returns>
     [HttpPost]
     [Route("login")]
+    [ProducesResponseType(500)]
+    [ProducesResponseType(401)]
+    [ProducesResponseType(200)]
     public async Task<IActionResult> Login()
     {
         if (

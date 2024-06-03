@@ -2,11 +2,19 @@
 
 namespace TestWebApi.Services.TodoService;
 
+/// <summary>
+/// todo 서비스
+/// </summary>
 public class TodoService : ITodoService
 {
     private readonly TestDbContext _dbContext;
     private readonly SystemInfoExtensions _systemInfoExtensions;
 
+    /// <summary>
+    /// 생성자
+    /// /// </summary>
+    /// <param name="dbContext"></param>
+    /// <param name="systemInfoExtensions"></param>
     public TodoService(TestDbContext dbContext, SystemInfoExtensions systemInfoExtensions)
     {
         _dbContext = dbContext;
@@ -49,13 +57,10 @@ public class TodoService : ITodoService
                 updateCount += await UpdateTodoAsync(todo);
         }
 
-        await UpdateUserTodoCountAsync(
-            todos.FirstOrDefault()!.userId,
-            insertCount,
-            isPlus: true
-        );
+        await UpdateUserTodoCountAsync(todos.FirstOrDefault()!.userId, insertCount, isPlus: true);
         return insertCount + updateCount;
     }
+
 
     public async Task DeleteTodosAsync(int todoNo)
     {

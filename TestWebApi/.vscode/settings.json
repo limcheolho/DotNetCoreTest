@@ -2,6 +2,7 @@
   "[csharp]": {
     "editor.maxTokenizationLineLength": 2500,
     "editor.inlineSuggest.suppressSuggestions": false,
-    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
+    "editor.formatOnType": true
   }
 }

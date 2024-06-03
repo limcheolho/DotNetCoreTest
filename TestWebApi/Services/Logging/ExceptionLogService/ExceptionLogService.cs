@@ -3,6 +3,9 @@ using TestWebApi.Services.TelegramService;
 
 namespace TestWebApi.Services.Logging.ExceptionLogService;
 
+/// <summary>
+/// exception 로그
+/// </summary>
 public class ExceptionLogService : IExceptionLogService
 {
     private readonly TestDbContext _dbContext;
@@ -10,6 +13,7 @@ public class ExceptionLogService : IExceptionLogService
     private readonly SystemInfoExtensions _systemInfoExtensions;
     private readonly ITelegramService _telegramService;
 
+    /// <inheritdoc/>
     public ExceptionLogService(
         TestDbContext dbContext,
         ExceptionLogHelper exceptionLogHelper,
@@ -23,6 +27,7 @@ public class ExceptionLogService : IExceptionLogService
         _telegramService = telegramService;
     }
 
+    /// <inheritdoc/>
     public async Task InsertControllerExceptionLogAsync(ExceptionLog model)
     {
         try
@@ -39,6 +44,7 @@ public class ExceptionLogService : IExceptionLogService
         }
     }
 
+    /// <inheritdoc/>
     public async Task InsertExceptionLogAsync(Exception inner, string callerName = null)
     {
         try
@@ -63,7 +69,7 @@ public class ExceptionLogService : IExceptionLogService
         }
     }
 
-
+    /// <inheritdoc/>
     public async Task<int> DeleteExpiredExceptionLogAsync()
     {
         var data = await _dbContext
@@ -73,5 +79,10 @@ public class ExceptionLogService : IExceptionLogService
         _dbContext.RemoveRange(data);
         await _dbContext.SaveChangesAsync();
         return count;
+    }
+
+    private string GetDebuggerDisplay()
+    {
+        return ToString();
     }
 }

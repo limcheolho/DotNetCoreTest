@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
-namespace TestWebApi.DataContext.Models;
+﻿namespace TestWebApi.DataContext.Models;
 
 public class ApiLog:TableBase
 {

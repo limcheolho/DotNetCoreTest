@@ -1,6 +1,4 @@
-﻿using TestWebApi.Services.Logging.ApiLogService;
-
-namespace TestWebApi.Schedulers.Jobs;
+﻿namespace TestWebApi.Schedulers.Jobs;
 
 public class DeleteApiLogsJob : IJob
 {

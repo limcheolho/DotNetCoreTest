@@ -1,5 +1,3 @@
-using Quartz;
-using TestWebApi.Services.Logging.ExceptionLogService;
 using TestWebApi.Services.Logging.SchedulerLogService;
 using TestWebApi.Services.TelegramService;
 
@@ -18,13 +16,11 @@ public class SchedulerBase
         ISchedulerLogService schedulerLogService,
         IExceptionLogService exceptionLogService,
         ITelegramService telegramService
-
     )
     {
         _schedulerLogService = schedulerLogService;
         _exceptionLogService = exceptionLogService;
         _telegramService = telegramService;
-
     }
 
     /// <summary>
@@ -57,10 +53,9 @@ public class SchedulerBase
                     remarks = result,
                 }
             );
-            
+
             //성공시 텔레그램 메시지 전송
             await _telegramService.SendSchedulerTerminatedAsync(jobType, jobNo, result);
-
         }
         catch (Exception e)
         {

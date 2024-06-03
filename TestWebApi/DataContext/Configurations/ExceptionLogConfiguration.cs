@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TestWebApi.DataContext.Models;
-
-namespace TestWebApi;
+﻿namespace TestWebApi;
 
 public class ExceptionLogConfiguration : IEntityTypeConfiguration<ExceptionLog>
 {

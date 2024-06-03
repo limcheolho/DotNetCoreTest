@@ -1,12 +1,13 @@
-﻿
-namespace TestWebApi;
-
+﻿namespace TestWebApi.Schedulers.Jobs;
 public class DeleteExceptionLogsJob : IJob
 {
     private readonly IExceptionLogService _exceptionLogService;
     private readonly SchedulerBase _schedulerBase;
 
-    public DeleteExceptionLogsJob(IExceptionLogService exceptionLogService, SchedulerBase schedulerBase)
+    public DeleteExceptionLogsJob(
+        IExceptionLogService exceptionLogService,
+        SchedulerBase schedulerBase
+    )
     {
         _exceptionLogService = exceptionLogService;
         _schedulerBase = schedulerBase;
