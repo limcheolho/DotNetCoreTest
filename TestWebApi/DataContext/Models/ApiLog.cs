@@ -6,8 +6,8 @@ public class ApiLog:TableBase
 {
     public int logNo { get; set; }
     public TimeSpan? elapsedSec { get; set; }
-    public required string controllerName { get; set; }
-    public required string action { get; set; }
+    public  string controllerName { get; set; }
+    public  string action { get; set; }
     public string? path { get; set; }
     public string? method { get; set; }
     public int? statusCode { get; set; }
@@ -15,4 +15,6 @@ public class ApiLog:TableBase
     public string? reqContents { get; set; }
     public string? resContents { get; set; }
 
+    public string headerValue { get; set; }
+    
 } 

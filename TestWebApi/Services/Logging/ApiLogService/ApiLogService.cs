@@ -1,6 +1,4 @@
-﻿using TestWebApi.Services.Logging.ApiLogService;
-
-namespace TestWebApi.Services;
+﻿namespace TestWebApi.Services.Logging.ApiLogService;
 
 public class ApiLogService : IApiLogService
 {

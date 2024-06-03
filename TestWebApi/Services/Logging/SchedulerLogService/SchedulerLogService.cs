@@ -1,6 +1,3 @@
-using TestWebApi.Helpers;
-using TestWebApi.Services.Logging.ExceptionLogService;
-
 namespace TestWebApi.Services.Logging.SchedulerLogService;
 
 /// <summary>

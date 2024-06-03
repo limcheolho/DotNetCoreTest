@@ -70,6 +70,12 @@ namespace TestWebApi.Migrations
                         .HasColumnOrder(1)
                         .HasComment("경과시간");
 
+                    b.Property<string>("headerValue")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnOrder(10)
+                        .HasComment("headerValue");
+
                     b.Property<bool>("isValid")
                         .HasColumnType("tinyint(1)")
                         .HasComment("사용여부");
@@ -437,6 +443,8 @@ namespace TestWebApi.Migrations
 
                     b.HasIndex("userId");
 
+                    b.HasIndex("todoNo", "createdAt");
+
                     b.ToTable("Todos", t =>
                         {
                             t.HasComment("투두");
@@ -499,7 +507,7 @@ namespace TestWebApi.Migrations
                         .HasColumnType("varchar(20)")
                         .HasComment("전화번호");
 
-                    b.Property<int?>("totalTodos")
+                    b.Property<int>("totalTodos")
                         .HasColumnType("int")
                         .HasComment("투두토탈");
 

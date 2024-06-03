@@ -17,10 +17,11 @@ public class JwtHelper
         _jwtSettings = jwtSettings;
     }
 
+
     /// <summary>
+    /// 토큰 발급
     /// </summary>
     /// <param name="userId"></param>
-    /// <param name="userNm"></param>
     /// <returns></returns>
     public (string accessToken, string refreshToken) GetJwtSecurityToken(
         string userId
@@ -28,12 +29,14 @@ public class JwtHelper
     {
         var authClaims = new List<Claim>
         {
-            new Claim("userId", userId),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            new("userId", userId),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
         var accessToken = CreateToken(authClaims: authClaims);
         var refreshToken = GenerateRefreshToken();
+        
+        //accessToken 암호화
         var newAccessToken = new JwtSecurityTokenHandler().WriteToken(accessToken);
 
         return (newAccessToken, refreshToken);
@@ -41,7 +44,7 @@ public class JwtHelper
 
 
     /// <summary>
-    ///     리프레쉬 토큰 생성
+    ///  리프레쉬 토큰 생성
     /// </summary>
     /// <returns></returns>
     private string GenerateRefreshToken()

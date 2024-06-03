@@ -32,5 +32,7 @@ public class ApiLogConfiguration : IEntityTypeConfiguration<ApiLog>
             .HasComment("reqContents").HasColumnOrder(8);
         builder.Property(p => p.resContents)
             .HasComment("resContents").HasColumnOrder(9);
+        builder.Property(p => p.headerValue)
+            .HasComment("headerValue").HasColumnOrder(10);
     }
 }

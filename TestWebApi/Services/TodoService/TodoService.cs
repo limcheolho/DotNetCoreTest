@@ -1,4 +1,6 @@
-﻿namespace TestWebApi.Services.TodoService;
+﻿using System.Transactions;
+
+namespace TestWebApi.Services.TodoService;
 
 public class TodoService : ITodoService
 {
@@ -36,58 +38,36 @@ public class TodoService : ITodoService
 
     public async Task<int> SaveTodosAsync(List<Todo> todos)
     {
-        await using var transaction = await _dbContext.Database.BeginTransactionAsync();
-        try
+        using var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+        var insertCount = 0;
+        var updateCount = 0;
+        foreach (var todo in todos)
         {
-            var insertCount = 0;
-            var updateCount = 0;
-            foreach (var todo in todos)
-            {
-                if (todo.todoNo == 0)
-                    insertCount += await InsertTodoAsync(todo);
-                else
-                    updateCount += await UpdateTodoAsync(todo);
-            }
-
-            await UpdateUserTodoCountAsync(
-                todos.FirstOrDefault()!.userId,
-                insertCount,
-                isPlus: true
-            );
-
-            await transaction.CommitAsync();
-
-            return insertCount + updateCount;
+            if (todo.todoNo == 0)
+                insertCount += await InsertTodoAsync(todo);
+            else
+                updateCount += await UpdateTodoAsync(todo);
         }
-        catch
-        {
-            await transaction.RollbackAsync();
-            throw;
-        }
+
+        await UpdateUserTodoCountAsync(
+            todos.FirstOrDefault()!.userId,
+            insertCount,
+            isPlus: true
+        );
+        return insertCount + updateCount;
     }
 
     public async Task DeleteTodosAsync(int todoNo)
     {
-        await using var transaction = await _dbContext.Database.BeginTransactionAsync();
+        using var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+        var data = await _dbContext.Todos.SingleOrDefaultAsync(g => g.todoNo == todoNo);
+        if (data == null)
+            return;
 
-        try
-        {
-            var data = await _dbContext.Todos.SingleOrDefaultAsync(g => g.todoNo == todoNo);
-            if (data == null)
-                return;
+        await UpdateUserTodoCountAsync(data.userId, 1, isPlus: false);
 
-            await UpdateUserTodoCountAsync(data.userId, 1, isPlus: false);
-
-            _dbContext.RemoveRange(data);
-            await _dbContext.SaveChangesAsync();
-            await transaction.CommitAsync();
-        }
-        catch
-        {
-            await transaction.RollbackAsync();
-
-            throw;
-        }
+        _dbContext.RemoveRange(data);
+        await _dbContext.SaveChangesAsync();
     }
 
     public async Task<IEnumerable<Todo>> FindTodosAsync(

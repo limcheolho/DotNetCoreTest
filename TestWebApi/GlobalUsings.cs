@@ -6,7 +6,6 @@ global using TestWebApi.DataContext.Models;
 global using TestWebApi.Enums;
 global using TestWebApi.Schedulers;
 global using TestWebApi.Services.Logging.ExceptionLogService;
-
 global using TestWebApi.Helpers;
-
 global using TestWebApi.Settings;
+global using Telegram.Bot;

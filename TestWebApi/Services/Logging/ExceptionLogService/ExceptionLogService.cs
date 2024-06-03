@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using TestWebApi.Helpers;
+using TestWebApi.Services.TelegramService;
 
 namespace TestWebApi.Services.Logging.ExceptionLogService;
 
@@ -8,16 +8,19 @@ public class ExceptionLogService : IExceptionLogService
     private readonly TestDbContext _dbContext;
     private readonly ExceptionLogHelper _exceptionLogHelper;
     private readonly SystemInfoExtensions _systemInfoExtensions;
+    private readonly ITelegramService _telegramService;
 
     public ExceptionLogService(
         TestDbContext dbContext,
         ExceptionLogHelper exceptionLogHelper,
-        SystemInfoExtensions systemInfoExtensions
+        SystemInfoExtensions systemInfoExtensions,
+        ITelegramService telegramService
     )
     {
         _dbContext = dbContext;
         _exceptionLogHelper = exceptionLogHelper;
         _systemInfoExtensions = systemInfoExtensions;
+        _telegramService = telegramService;
     }
 
     public async Task InsertControllerExceptionLogAsync(ExceptionLog model)
@@ -26,6 +29,7 @@ public class ExceptionLogService : IExceptionLogService
         {
             _systemInfoExtensions.SetModelLogInfo(model);
             await _dbContext.ExceptionLogs.AddAsync(model);
+            await _telegramService.SendExceptionAsync(model);
             await _dbContext.SaveChangesAsync();
         }
         catch (Exception e)
@@ -49,6 +53,8 @@ public class ExceptionLogService : IExceptionLogService
             };
             _systemInfoExtensions.SetModelLogInfo(model);
             await _dbContext.ExceptionLogs.AddAsync(model);
+            await _telegramService.SendExceptionAsync(model);
+
             await _dbContext.SaveChangesAsync();
         }
         catch (Exception e)
@@ -56,6 +62,7 @@ public class ExceptionLogService : IExceptionLogService
             _exceptionLogHelper.Log(e);
         }
     }
+
 
     public async Task<int> DeleteExpiredExceptionLogAsync()
     {

@@ -6,7 +6,6 @@ public class AuthService : IAuthService
 {
     private readonly TestDbContext _dbContext;
     private readonly SystemInfoExtensions _systemInfoExtensions;
-
     private readonly IOptions<JwtSettings> _jwtSettings;
 
     public AuthService(

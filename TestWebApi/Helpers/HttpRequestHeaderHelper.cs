@@ -1,10 +1,11 @@
 ﻿using System.Text;
 
 namespace TestWebApi.Helpers;
-// <summary>
-///     Http Header 정보 가져와서 처리하는 로직들
+
+/// <summary>
+/// Header 정보 가져와서 처리하는 로직들
 /// </summary>
-public class HttpRequestHeaderHelper
+public abstract class HttpRequestHeaderHelper
 {
     /// <summary>
     ///

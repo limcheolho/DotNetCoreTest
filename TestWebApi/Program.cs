@@ -1,11 +1,13 @@
 using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore;
-using TestWebApi.DataContext;
+using Microsoft.AspNetCore.HttpOverrides;
 using TestWebApi.Filters;
+using TestWebApi.Services.TelegramService;
 using TestWebApi.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//filter 등록
+//json loop 방지
 builder.Services.AddControllers(options =>
     {
         options.Filters.Add<CustomLogActionFilter>();
@@ -17,6 +19,12 @@ builder.Services.AddControllers(options =>
         options.JsonSerializerOptions.PropertyNamingPolicy = null;
     });
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    // 필요한 경우 KnownProxies 또는 KnownNetworks 설정
+    // options.KnownProxies.Add(IPAddress.Parse("127.0.0.1"));
+});
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -55,5 +63,17 @@ app.UseCors(x =>
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+
+// 서비스를 가져와서 사용합니다.
+await using (var serviceScope = app.Services.CreateAsyncScope())
+{
+    var services = serviceScope.ServiceProvider;
+    // 등록한 서비스를 가져옵니다.
+    var myService = services.GetRequiredService<ITelegramService>();
+    // 서비스의 메서드를 호출합니다.
+    var name = Environment.MachineName;
+    await myService.SendTextAsync($"service started : 📺{name}");
+}
 
 app.Run();

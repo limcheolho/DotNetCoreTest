@@ -1,6 +1,7 @@
 using Quartz;
 using TestWebApi.Services.Logging.ExceptionLogService;
 using TestWebApi.Services.Logging.SchedulerLogService;
+using TestWebApi.Services.TelegramService;
 
 namespace TestWebApi.Schedulers;
 
@@ -11,14 +12,19 @@ public class SchedulerBase
 {
     private readonly ISchedulerLogService _schedulerLogService;
     private readonly IExceptionLogService _exceptionLogService;
+    private readonly ITelegramService _telegramService;
 
     public SchedulerBase(
         ISchedulerLogService schedulerLogService,
-        IExceptionLogService exceptionLogService
+        IExceptionLogService exceptionLogService,
+        ITelegramService telegramService
+
     )
     {
         _schedulerLogService = schedulerLogService;
         _exceptionLogService = exceptionLogService;
+        _telegramService = telegramService;
+
     }
 
     /// <summary>
@@ -37,6 +43,8 @@ public class SchedulerBase
                 new SchedulerLog() { jobType = jobType.ToString() }
             );
 
+            await _telegramService.SendSchedulerStartAsync(jobType, jobNo);
+
             //배치 실행
             var result = await func();
 
@@ -49,6 +57,10 @@ public class SchedulerBase
                     remarks = result,
                 }
             );
+            
+            //성공시 텔레그램 메시지 전송
+            await _telegramService.SendSchedulerTerminatedAsync(jobType, jobNo, result);
+
         }
         catch (Exception e)
         {

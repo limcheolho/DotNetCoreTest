@@ -37,6 +37,8 @@ public class CustomLogActionFilter : IAsyncActionFilter
         var headerAuthorization = context.HttpContext.Request?.Headers["Authorization"].ToString();
 
 
+        var headerValue = JsonConvert.SerializeObject(context.HttpContext.Request?.Headers);
+
         var reqContents = JsonSerializer.Serialize(context.ActionArguments);
 
         var method = context.HttpContext.Request?.Method;
@@ -54,6 +56,7 @@ public class CustomLogActionFilter : IAsyncActionFilter
             action = action,
             method = method,
             path = path,
+            headerValue = headerValue ?? "",
         });
 
         /*여기서 컨트롤러 비즈니스 로직 실행됨*/
@@ -87,12 +90,12 @@ public class CustomLogActionFilter : IAsyncActionFilter
             httpResult = 500;
 
 
-        // await _apiLogService.UpdateLogAsync(new ApiLog()
-        // {
-        //     logNo = reqLogNo,
-        //     resContents = resContent,
-        //     statusCode = httpResult,
-        //     elapsedSec = stopWatch.Elapsed,
-        // });
+        await _apiLogService.UpdateLogAsync(new ApiLog()
+        {
+            logNo = reqLogNo,
+            resContents = resContent,
+            statusCode = httpResult,
+            elapsedSec = stopWatch.Elapsed,
+        });
     }
 }
